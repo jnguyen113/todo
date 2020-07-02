@@ -1,5 +1,5 @@
 h1{
-    border: 5px solid white;
+    border: 5px solid grey;
     text-align: center;
     margin-left: 28%;
     margin-right: 28%;
@@ -27,10 +27,11 @@ h1{
     color: white;
 }
 #myInput{
+    margin-bottom: 10px;
     width: 500px;
     height: 50px;
     font-size: 20px;
-    border: 5px solid white;
+    border: 5px solid grey;
     background-color: black;
     color: white;
     border-radius: 6%;
@@ -42,7 +43,8 @@ h1{
 }
 
 .background{
-    background-image: url(https://images.unsplash.com/photo-1437651025703-2858c944e3eb?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=9fbaf2f1986f9afafa54e8d7e4efa81a);
+    background-image: url(https://images.unsplash.com/photo-1537195316288-e240eb0d46d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+    background-size:100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -56,11 +58,13 @@ h1{
 
 
 ul{
+    
     margin: 0;
     padding: 0;
 }
 
 ul li {
+    
     text-align: center;
     cursor: pointer;
     position: relative;
@@ -71,8 +75,20 @@ ul li {
     opacity: .8;
     color: white;
 }
-li:hover{
+
+.remove{
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    float: right;
+    width: 70px;
+    height: 30px;
+    border-radius: 10%;
+    margin-right: 15px;
+    background-color: lightpink;
+    color: white;
+}
+.remove:hover{
     background-color: lightcoral;
 }
-
 

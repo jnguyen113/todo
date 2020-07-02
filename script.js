@@ -1,41 +1,64 @@
-const add = document.querySelector('.add');
-const reset = document.querySelector('.reset');
-const li = document.createElement("li");
+//getting local storage function
+function getTodo() {
+    var todos = new Array;
+    //the item became a string, so we need to parse it
+    var stringedTodos = localStorage.getItem('todo');
+    //as long as there are items in local storage
+    if (stringedTodos !== null) {
+        todos = JSON.parse(stringedTodos); 
+    }
+    return todos;
+}
+ 
+//whenever you are adding, you set the item in local storage
+function add() {
+    var task = document.getElementById('myInput').value;
+    
+    //once the local storage is set, you get it
+    var todos = getTodo();
+    todos.push(task);
+    localStorage.setItem('todo', JSON.stringify(todos));
+ 
+    show();
+    //clears the input text box after 
+    const clearInput = document.getElementById('myInput').value = "";
+    return false;
+}
 
-add.addEventListener('click', function () {
-    //first you want to create the element list
-    var li = document.createElement("li");
-    //getting the value of the what's in the text box
-    var inputValue = document.getElementById('myInput').value;
-    //clears the text box after submission, won't be grabbed by anything below
-    var clearInput = document.getElementById('myInput').value = '';
-    //create the text node in order to append to the list
-    const t = document.createTextNode(inputValue);
-    //append t to the list we created
-
-    li.appendChild(t);
-    //create the clear button for each single element
-    //to append it to our actual list get its name and append
-    document.getElementById('myUL').append(li);
-    document.getElementById('myUL').addEventListener('click', function(e){
-        var list = e.target;
-        var listItems = document.querySelectorAll("li"); 
-        var ul = document.getElementById("myUL");
-        list.parentNode.removeChild(list);       
-    });
-});
-
-
-reset.addEventListener('click', function () {
-    //creating new list
-    var newList = document.createElement("ul");
-    //setting same ID name as previously so add button still works the same
-    newList.setAttribute("id", "myUL");
-    //get the current list and replace it with new list
-    var currentList = document.getElementById('myUL');
-    currentList.replaceWith(newList);
-
-})
+function remove() {
+    //gets the specific id of element
+    var id = this.getAttribute('id');
+    //calling function todo to get items
+    var todos = getTodo();
+    //splice that specific id once
+    todos.splice(id, 1);
+    //after splicing, set up new todos again
+    localStorage.setItem('todo', JSON.stringify(todos));
+    //show the change
+    show();
+    return false;
+}
 
 
 
+function show() {
+    
+    var todos = getTodo();
+    //start with a list
+    var html = '<ul>';
+    //creating list per length and remove button
+    for(var i=0; i<todos.length; i++) {
+        html += '<li>' + todos[i] + '<button class="remove" id="' + i  + '">x</button></li>';
+    };
+    html += '</ul>'; //end with unordered list
+ 
+    document.getElementById('myUL').innerHTML = html;
+ 
+    var buttons = document.getElementsByClassName('remove');
+    for (var i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', remove);
+    };
+
+}
+document.getElementById('add').addEventListener('click', add);
+show();
