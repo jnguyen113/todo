@@ -9,7 +9,7 @@ function getTodo() {
     }
     return todos;
 }
- 
+ //<button type="button" class="add" id="add">+</button>
 //whenever you are adding, you set the item in local storage
 function add() {
     var task = document.getElementById('myInput').value;
@@ -42,7 +42,6 @@ function remove() {
 
 
 function show() {
-    
     var todos = getTodo();
     //start with a list
     var html = '<ul>';
@@ -60,5 +59,7 @@ function show() {
     };
 
 }
+
+
 document.getElementById('add').addEventListener('click', add);
 show();

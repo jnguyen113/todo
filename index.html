@@ -11,9 +11,11 @@
 
 
                 <div id="myDiv" class="header"> 
-                    <button type="button" class="reset" id="reset" onclick="window.localStorage.clear();">RESET</button>
-                    <input type="text" class="storage" id="myInput" placeholder="What do you need to do?">
-                    <button type="button" class="add" id="add">+</button>
+                    <!--Reset button to clear local storage 
+                        <button type="reset" class="reset" id="reset" onclick="window.localStorage.clear();">RESET</button> -->
+                    <input type="text" class="storage" id="myInput" placeholder="What do you need to do?" required>
+                    <input type="submit" value="Submit" class="add" id="add" onclick="add">
+                    
                 </div>
 
 
@@ -21,7 +23,9 @@
                 </div>
             
                 
-                <ul id="myUL"></ul>
+                <ul id="myUL">
+                    <h2>Add Items</h1>
+                </ul>
             
         </div>
     </body>
